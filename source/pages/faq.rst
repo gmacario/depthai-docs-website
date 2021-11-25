@@ -181,18 +181,7 @@ And this is actually an interesting case as it demonstrates two things on DepthA
 #. Stereo inference (i.e. running the neural network(s) running on both the left and right cameras in parallel)
 #. Multi-stage inference (i.e. face detection flowed directly into facial landmark directly on DepthAI)
 
-We have a `gen2-triangulation <https://github.com/luxonis/depthai-experiments/tree/master/gen2-triangulation>`__ demo that performs the stereo neural interface. **You should use the gen2 demo,** as we are focusing only on the gen2.
-
-If you would like to use the (old) gen1 API, you would have to download gen1 depthai library (:code:`python3 -mpip install depthai==1.0.0.0`) and checkout the :code:`gen1_main` branch of the `depthai repo <https://github.com/luxonis/depthai>`__. After that, you can run
-
-.. code-block:: bash
-
-  python3 depthai_demo.py -cnn face-detection-retail-0004 -cnn2 landmarks-regression-retail-0009 -cam left_right -dd -sh 12 -cmx 12 -nce 2 -monor 400 -monof 30
-
-
-Where :code:`cam` specifies to run the neural network on both cameras, :code:`-cnn` specifies the first-stage network to
-run (face detection, in this case), :code:`-cnn2` specifies the second-stage network (facial landmark detection, in this case),
-and :code:`-dd` disables running disparity depth calculations (since they are unused in this mode).
+We have a `gen2-triangulation <https://github.com/luxonis/depthai-experiments/tree/master/gen2-triangulation>`__ demo that performs the stereo neural interface.
 
 Notes
 *****
@@ -208,34 +197,18 @@ And so running stereo neural inference excels in these cases, as it does not rel
 and instead relies purely on the results of the neural network, which are robust at providing these single pixel results.
 And triangulation of the parallel left/right outputs results in very-accurate real-time landmark results in 3D space.
 
-What is the Gen2 Pipeline Builder?
-##################################
+What is DepthAI Pipeline Builder?
+#################################
 
-UPDATE: The Gen2 Pipeline Builder is now the standard release of DepthAI.
-This Gen2 API system was architected to be next-generation software suite for DepthAI and OAK.  All DepthAI and OAK hardware work with Gen1 and Gen2 software, as Gen2 is purely a software re-write, no hardware changes.
-Gen2 is infinitely more flexible, and is the result of all that we learned from the customer deployments of Gen1.
-Amassing all the requests and need for flexibility from users of Gen1, we made Gen2.
-In short, Gen2 allows theoretically-infinite permutations of parallel and series CV + AI (neural inference) nodes,
-limited only by hardware capabilities, whereas Gen1 was limited for example to 2-series and 2-parallel neural inference.
-Full background on the Gen2 Pipeline Builder is `here <https://github.com/luxonis/depthai/issues/136>`__.
-
-Several Gen2 Examples are `here <https://github.com/luxonis/depthai-experiments#gen2-gaze-estimation-here>`__ and also the docs for Gen2 are now available in the `main docs page <https://docs.luxonis.com/projects/api/en/latest/>`__.
+DepthAI API system was architected to be next-generation software suite for DepthAI and OAK.
+In short, DepthAI pipeline builder allows theoretically-infinite permutations of parallel and series CV + AI (neural inference) nodes,
+limited only by hardware capabilities. Full background on the Gen2 Pipeline Builder is `here <https://github.com/luxonis/depthai/issues/136>`__.
 
 What is megaAI?
 ###############
 
-The monocular (single-camera) version of DepthAI is megaAI. Because not all solutions to embedded AI/CV problems require spatial information.
-
-We named it :code:`mega` because it's tiny:
-
-.. image:: https://www.crowdsupply.com/img/8182/megaai-quarter-original_png_project-body.jpg
-  :alt: megaAI
-
-megaAI uses all the same hardware, firmware, software, and training stacks as DepthAI (and uses the same DepthAI Github repositories), it is simply the tiny single-camera variant.
-
-More details - including open source 3D files and schematics, can be found `here <https://docs.luxonis.com/projects/hardware/en/latest/pages/BK1096.html>`__.
-
-You can buy megaAI from our distributors and also our online store `here <https://shop.luxonis.com/products/bw1093>`__.
+megaAI, or **OAK-1**, is the monocular (single-camera) version of the OAK-D. Because not all solutions to embedded AI/CV problems require spatial information.
+More details can be found `here <https://docs.luxonis.com/projects/hardware/en/latest/pages/BW1093.html>`__.
 
 Which Model Should I Order?
 ###########################
@@ -527,7 +500,7 @@ Available in DepthAI API Today:
 - Stereo Depth (including median filtering) (e.g. `here <https://youtu.be/sO1EU5AUq4U>`__)
 - Stereo Inference (with two-stage, e.g. `here <https://youtu.be/eEnDW0WQ3bo>`__)
 - 3D Object Localization (augmenting 2D object detectors with 3D position in meters, e.g. `here <https://youtu.be/cJr4IpGMSLA>`__ and `here <https://youtu.be/SWDQekolM8o>`__)
-- Object Tracking (e.g. `here <https://vimeo.com/422965770>`__, including in 3D space)
+- Object Tracking (with `ObjectTracker <https://docs.luxonis.com/projects/api/en/latest/components/nodes/object_tracker/>`__, including in 3D space)
 - H.264 and H.265 Encoding (HEVC, 1080p & 4K Video, e.g. `here <https://youtu.be/vEq7LtGbECs>`__)
 - JPEG Encoding (e.g. `here <https://github.com/luxonis/depthai-experiments/tree/master/gen2-class-saver-jpeg#gen2-class-saver-jpeg>`__)
 - MJPEG Encoding
@@ -536,7 +509,6 @@ Available in DepthAI API Today:
 - SPI Support, `here <https://github.com/luxonis/depthai/issues/140>`__
 - Arbitrary crop/rescale/reformat and ROI return (e.g. `here <https://docs.luxonis.com/projects/api/en/latest/samples/ColorCamera/rgb_camera_control/#rgb-camera-control>`__)
 - Integrated Text Detection (e.g. `here <https://github.com/luxonis/depthai-experiments/tree/master/gen2-ocr#gen2-text-detection--optical-character-recognition-ocr-pipeline>`__)
-- Pipeline Builder Gen2 (arbitrary series/parallel combination of neural nets and CV functions, background `here <https://github.com/luxonis/depthai/issues/136>`__ and API documentation is `here <https://docs.luxonis.com/projects/api/en/latest/>`__).
 - Lossless zoom (from 12MP full to 4K, 1080p, or 720p, `here <https://github.com/luxonis/depthai/issues/135>`__)
 - Improved Stereo Neural Inference Support (`here <https://github.com/luxonis/depthai-experiments/tree/master/gen2-triangulation>`__)
 - Integrated IMU Support (`here <https://github.com/luxonis/depthai-hardware/issues/8>`__)
@@ -544,7 +516,7 @@ Available in DepthAI API Today:
 - On-Device Python Scripting Support, `here <https://docs.luxonis.com/projects/api/en/latest/components/nodes/script/>`__
 - Feature Tracking ( `here <https://docs.luxonis.com/projects/api/en/latest/components/nodes/feature_tracker/>`__, `video <https://www.youtube.com/watch?v=0WonOa0xmDY>`__)
 
-The above features are available in the Luxonis Pipeline Builder Gen2 which is now the main API for DepthAI. The Gen1 API is still supported, and can be accessed via the version switcher at the bottom left of this page.  See below for in-progress additional functionality/flexibility which will be added as modular nodes to the Luxonis pipeline builder for DepthAI.
+The above features are available in the DepthAI Pipeline Builder which is now the main API for DepthAI.  See below for in-progress additional functionality/flexibility which will be added as modular nodes to the pipeline builder.
 
 On our Roadmap (Most are in development/integration)
 ****************************************************

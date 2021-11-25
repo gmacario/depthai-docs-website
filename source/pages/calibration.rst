@@ -102,7 +102,7 @@ please see the steps below and also :code:`./calibrate.py --help` which will pri
 Modular cameras calibration
 ***************************
 
-Use one of the board :code:`*.json` files from `here <https://github.com/luxonis/depthai/tree/gen1_main/resources/boards>`__ to
+Use one of the board :code:`*.json` files from `here <https://github.com/luxonis/depthai/tree/main/resources/boards>`__ to
 define the baseline between the stereo cameras, and between the left camera and the color camera, replacing the items in brackets below.
 
 - Swap left/right (i.e. which way are the cameras facing, set to :code:`true` or :code:`false`)

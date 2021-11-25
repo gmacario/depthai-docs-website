@@ -1,8 +1,3 @@
-.. Luxonis Docs documentation master file, created by
-   sphinx-quickstart on Tue Nov  3 14:34:56 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 DepthAI's documentation
 =======================
 
@@ -10,9 +5,7 @@ DepthAI's documentation
 
    New to DepthAI? Start :ref:`here <First steps with DepthAI>`!
 
-*Learn about DepthAI ecosystem, available devices, calibration instructions, and more*
-
-DepthAI is the embedded :ref:`spatial <spatialai>` AI platform built around `Myriad X <https://www.intel.com/content/www/us/en/products/details/processors/movidius-vpu/movidius-myriad-x.html>`__
+DepthAI is the embedded :ref:`spatial AI <spatialai>` platform built around `Myriad X <https://www.intel.com/content/www/us/en/products/details/processors/movidius-vpu/movidius-myriad-x.html>`__
 - a complete ecosystem of custom `hardware <https://docs.luxonis.com/projects/hardware/en/latest/>`__, firmware, `software <https://docs.luxonis.com/projects/api/en/latest/>`__,
 and AI training. It combines neural inference, depth vision, and feature tracking into an easy-to-use, works-in-30-seconds solution.
 
@@ -22,33 +15,16 @@ DepthAI gives you power of AI, depth, and tracking in a single device with a sim
 
 Best of all, it is modular (System on Module) and built on `MIT-licensed open source hardware <https://github.com/luxonis/depthai-hardware>`__, affording adding these Spatial AI/CV super powers to real commercial products.
 
-In the following sections, we will showcase what you can build with DepthAI. Different examples will showcase a different usage
-of DepthAI capabilities, which can both encourage you to develop your own ideas or dive deeper into DepthAI capabilities
-to discover them yourself.
-
 Demo script
 ###########
 
-Demo script is our multipurpose command line demo tool, built around Gen2 Pipeline, that allows you to check
-DepthAI features straight from the command line - no coding required!  It works USB and POE equally, automatically discovering any POE DepthAI on your LAN and/or USB DepthAI connected to your computer.  If multiple are connected, it will prompt you on which to use for the demo.
+**Demo script** is our multipurpose **GUI demo tool**, built on top of the `DepthAI SDK <https://docs.luxonis.com/projects/sdk/en/latest/>`__, that allows
+you to check DepthAI features straight from the GUI - no coding required!
 
 .. image:: https://user-images.githubusercontent.com/18037362/132068313-e6db90c2-823b-42f2-86fb-148e798f55de.png
   :alt: Default run
 
-To install and run the demo script on your DepthAI device, type the following commands in the terminal.
-
-.. code-block:: bash
-
-  git clone https://github.com/luxonis/depthai.git
-  cd depthai
-  python3 install_requirements.py
-  python3 depthai_demo.py
-
-And then following up with the `README.md <https://github.com/luxonis/depthai/blob/main/README.md>`__ for more usage examples.
-We have also prepared a **step by step guide** :ref:`here <First steps with DepthAI>` with detailed instructions how to set up your DepthAI and run this script.
-
-If you have issues during the installation, see our `Installation page <https://docs.luxonis.com/projects/api/en/latest/install/>`__ for additional OS-specific
-instructions
+We have prepared a **step by step guide** :ref:`here <First steps with DepthAI>` with detailed instructions on how to run the DepthAI demo script.
 
 Example Use Cases
 #################
@@ -387,10 +363,6 @@ In this section, you'll find an inspiration what can you build right away with D
 
 Tutorials
 #########
-
-In this section, you'll find a way to expand your knowledge in DepthAI-related topics. Tutorials listed below are a complete
-walkthrough in a specific topic.
-
 
 .. raw:: html
 
